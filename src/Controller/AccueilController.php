@@ -9,15 +9,17 @@ use App\Entity\Catalogues;
 class AccueilController extends AbstractController
 {
 
-    //#[Route('/accueil', name: 'accueil')]
+    /**
+     * @Route("/accueil", name= "accueil")
+     */
     public function index(): Response
     {
-        $repo = $this->getDoctrine()->GetRepository(Catalogue::class);
+        $repo = $this->getDoctrine()->GetRepository(Catalogues::class);
 
         $catalogues = $repo->FindAll();
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
-            'articles' => $catalogues
+            'catalogues' => $catalogues
         ]);
     }
 
@@ -27,6 +29,8 @@ class AccueilController extends AbstractController
 
     public function home()
     {
-        return $this->render('accueil/home.html.twig');
+        return $this->render('accueil/home.html.twig',[
+            'title' => 'Bienvenue sur Steam'
+        ]);
     }
 }
