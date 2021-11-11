@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <catalogues>
+        <h2> {{catalogues.Titre}}</h2>
+        <div class="content">
+            <img src="{{ catalogues.image }}" alt ="">
+             {{ catalogues.Description | raw}}
+        </div>
+    </catalogues>
+{% endblock %}

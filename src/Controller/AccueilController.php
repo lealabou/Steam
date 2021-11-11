@@ -33,4 +33,17 @@ class AccueilController extends AbstractController
             'title' => 'Bienvenue sur Steam'
         ]);
     }
+
+    /**
+     * @Route("/accueil/{id}", name= "accueil_show")
+     */
+
+    public function show($id)
+    {
+        $repo = $this->getDoctrine()->GetRepository(Catalogues::class);
+        $catalogues = $repo->find($id);
+        return $this->render('accueil/show.html.twig',[
+            'catalogues' => $catalogues
+        ]);
+    }
 }

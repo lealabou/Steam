@@ -3,7 +3,18 @@
 {% block title %}Hello AccueilController!{% endblock %}
 
 {% block body %}
-    <section class="catalogues">
-        
-    </section>
+<section class="catalogues">
+
+    {% for catalogues in catalogues %}
+        <catalogues>
+            <h2> {{ catalogues.Titre}}</h2>
+            <div class="content">
+                <img src="{{ catalogues.image }}" alt ="">
+                {{ catalogues.Description | raw}}
+                <a href="{{ path('accueil_show',{'id' : catalogues.id}) }}" class="btn btn-primary">Lire la suite</a>
+            </div>
+        </catalogues>
+    {% endfor %}
+    
+</section>
 {% endblock %}
