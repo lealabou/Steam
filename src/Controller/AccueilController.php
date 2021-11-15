@@ -35,6 +35,14 @@ class AccueilController extends AbstractController
     }
 
     /**
+     * @Route("/accueil/createGame", name="accueil_createGame")
+     */
+    public function create()
+    {
+        return $this->render('accueil/createGame.html.twig');
+    }
+
+    /**
      * @Route("/accueil/{id}", name= "accueil_show")
      */
 
