@@ -39,7 +39,17 @@ class AccueilController extends AbstractController
      */
     public function create()
     {
-        return $this->render('accueil/createGame.html.twig');
+        $catalogues = new Catalogues();
+
+        $form= $this->createFormBuilder($catalogues)
+                    ->add('titre')
+                    ->add('Description')
+                    ->add('image')
+                    ->getForm();
+        
+        return $this->render('accueil/createGame.html.twig',[
+            'formJeu'=> $form->createView()
+        ]);
     }
 
     /**
