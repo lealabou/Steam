@@ -5,7 +5,14 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Catalogues;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Doctrine\ORM\EntityManagerInterface;
+
+
 class AccueilController extends AbstractController
 {
 
@@ -36,19 +43,38 @@ class AccueilController extends AbstractController
 
     /**
      * @Route("/accueil/createGame", name="accueil_createGame")
+     * @Route("/accueil/{id}/edit", name="accueil_editGame")
      */
-    public function create()
+    public function form(Catalogues $catalogues = null, Request $request, EntityManagerInterface $entityManager)
     {
-        $catalogues = new Catalogues();
+        //$catalogues = new Catalogues();
+        if(!$catalogues)
+        {
+            $catalogues = new Catalogues();
+        }
 
-        $form= $this->createFormBuilder($catalogues)
-                    ->add('titre')
-                    ->add('Description')
-                    ->add('image')
-                    ->getForm();
         
-        return $this->render('accueil/createGame.html.twig',[
-            'formJeu'=> $form->createView()
+        $form = $this->createFormBuilder($catalogues)
+                    ->add('Titre')
+                    ->add('Description')
+                    ->add('Image')
+                    ->add('Categorie')
+                    ->add('Date')
+                    
+                    ->getForm();
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $entityManager->persist($catalogues);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('accueil_show', ['id' => $catalogues->getId()]);
+        }
+
+        return $this->render('accueil/createGame.html.twig', [
+            'formJeu' => $form->createView(),
+            'editMode' => $catalogues->getId() !== null
         ]);
     }
 

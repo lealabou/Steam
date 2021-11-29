@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CataloguesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CataloguesRepository::class)
@@ -19,16 +20,19 @@ class Catalogues
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min = 5, max=255, minMessage="Le titre est trop court")
      */
     private $Titre;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min = 5)
      */
     private $Description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url()
      */
     private $image;
 

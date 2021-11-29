@@ -1,8 +1,32 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme formJeu 'bootstrap_4_layout.html.twig' %}
+
 {% block body %}
+    
+    <h1>        
+        {% if editMode %}
+            Modification du Jeu
+        {% else %}
+            Création d'un jeu
+        {% endif %}
+    </h1>
 
-    <h1>Création d'un jeu</h1>
+    {{ form_start(formJeu) }}
 
-    {{ form(formJeu) }}
+    {{ form_row(formJeu.Titre, {'attr': {'placeholder': 'Titre du jeu' }}) }}
+    {{ form_row(formJeu.Description, {'attr': {'placeholder': 'Description du Jeu'}}) }}
+    {{ form_row(formJeu.Image, {'attr': {'placeholder': "URL de l'image"}}) }}
+    {{ form_row(formJeu.Categorie, {'attr': {'placeholder': "Categorie du jeu"}}) }}
+    {{ form_row(formJeu.Date, {'attr': {'placeholder': "Date de création"}}) }}
+
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+            Enregistrer les modifications
+        {% else %}
+            Ajouter le Jeu
+        {% endif %}
+
+    {{ form_end(formJeu) }}
+
 {% endblock %}
