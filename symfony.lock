@@ -228,6 +228,9 @@
     "psr/log": {
         "version": "2.0.0"
     },
+    "psy/psysh": {
+        "version": "v0.10.12"
+    },
     "scheb/2fa-bundle": {
         "version": "5.13",
         "recipe": {
@@ -722,6 +725,9 @@
     },
     "thecodingmachine/safe": {
         "version": "v1.3.3"
+    },
+    "theofidry/psysh-bundle": {
+        "version": "4.4.0"
     },
     "theseer/tokenizer": {
         "version": "1.2.1"

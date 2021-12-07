@@ -5,6 +5,13 @@
     <div class="row">
         <div class="login-form bg-light mt-4 p-4">
             <form method="post" class="row g-3">
+
+                {% if app.user %}           {# si l'utilisateur est connecte#}
+                    <div class "mb-3">
+                        Tu es connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}"> Logout </a>
+                    </div>
+                {% endif %}
+
                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
                 <div class="col-12">
