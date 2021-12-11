@@ -26,7 +26,7 @@
                 <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                    <a class="nav-link active" href="{{path('accueil')}}">accueil
+                    <a class="nav-link active" href="{{path('accueil')}}">Accueil
                         <span class="visually-hidden">(current)</span>
                     </a>
                     </li>
@@ -49,6 +49,18 @@
                         <a class="dropdown-item" href="#">Separated link</a>
                     </div>
                     </li>
+
+                    {% if not app.user %}
+                        <li class="nav-item">
+                            <a class="nav_link" href="{{ path('security_login') }}"> Connexion </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('security_logout') }}"> Déconnexion </a>
+                        </li>
+                    {% endif %}
+
+
                 </ul>
                 </div>
             </div>
