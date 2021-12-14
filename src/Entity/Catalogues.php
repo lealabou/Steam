@@ -46,6 +46,19 @@ class Catalogues
      */
     private $Date;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Prix;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min = 5, max=255, minMessage="Lien incorect")
+     */
+    private $Telechargement;
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -110,4 +123,29 @@ class Catalogues
 
         return $this;
     }
+
+    public function getPrix(): ?int
+    {
+        return $this->Prix;
+    }
+
+    public function setPrix(int $Prix): self
+    {
+        $this->Prix = $Prix;
+
+        return $this;
+    }
+
+    public function getTelechargement(): ?string
+    {
+        return $this->Telechargement;
+    }
+    
+    public function setTelechargement(string $Telechargement): self
+    {
+        $this->Telechargement = $Telechargement;
+
+        return $this;
+    }
+
 }

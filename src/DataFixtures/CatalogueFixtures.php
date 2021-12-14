@@ -17,7 +17,9 @@ class CatalogueFixtures extends Fixture
                         ->setDescription("<p>Description du Jeu n°$i</p>")
                         ->setImage("http://placehold.it/350x150")
                         ->setCategorie("<p>Nom de la Categorie</p>")
-                        ->setDate(1);
+                        ->setDate(1)
+                        ->setPrix(1)
+                        ->setLienDuJeu("<p>Lien du jeu n°i</p>");
             $manager->persist($catalogues);
 
         }

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Catalogues;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -41,6 +42,7 @@ class AccueilController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/accueil/createGame", name="accueil_createGame")
      * @Route("/accueil/{id}/edit", name="accueil_editGame")
@@ -60,7 +62,8 @@ class AccueilController extends AbstractController
                     ->add('Image')
                     ->add('Categorie')
                     ->add('Date')
-                    
+                    ->add('Prix')
+                    ->add('Telechargement')
                     ->getForm();
         $form->handleRequest($request);
 
