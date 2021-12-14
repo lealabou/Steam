@@ -17,6 +17,8 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\CustomCre
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 
+
+
 class LoginFormAuthenticator extends AbstractAuthenticator
 {
     private $userRepository;
@@ -36,6 +38,7 @@ class LoginFormAuthenticator extends AbstractAuthenticator
     {
         $username = $request->request->get('username');
         $password = $request->request->get('password');
+
 
         return new Passport(
             new UserBadge($username, function($userIdentifier) {

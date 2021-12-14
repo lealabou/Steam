@@ -1,29 +1,19 @@
 {% extends 'base.html.twig' %}
-{% block title %}Log In!{% endblock %}
+
 {% block body %}
-<div class="container">
-    <div class="row">
-        <div class="login-form bg-light mt-4 p-4">
-            <form method="post" class="row g-3">
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1> Se connexter à SteamLike</h1>
 
-                <div class="col-12">
-                    <label for="inputUsername">Username</label>
-                    <input type="username" name="username" id="inputUsername" class="form-control" required autofocus>
-                </div>
-
-                <div class="col-12">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control" required>
-                </div>
-
-                <div class="col-12">
-                    <button class="btn btn-lg btn-primary float-end" type="submit">
-                        Sign in
-                    </button>
-                </div>                
-            </form>
+    <form action ="{{ path('security_login') }}" method = "post">
+        <div class="form-group">
+            <input placeholder = "Nom d'utilisateur ..." required name = "_username" type = "text" class = "form-control">
         </div>
-    </div>
-</div>
+        <div class="form-group">
+            <input placeholder = "Mot de passe ..." required name = "_password" type = "password" class = "form-control">
+        </div>
+
+        <div class = "form-group">
+            <button type = "submit" class = "btn btn-success"> Connexion ! </button>
+        </div>
+    </form>
+
 {% endblock %}

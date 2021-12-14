@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} A Propos {% endblock %}
+
+{% block body %}
+    <h1> SteamLike </h1>
+    <p> SteamLike est l'endroit idéal pour jouer, créer et parler jeu vidéo. </p>
+
+    <h3> Un accès instantané aux jeux </h3>
+    <p> Profitez d'offres exclusives parmi un large choix de jeux, AAA ou indépendants.  </p>    
+    <a class ="nav-link text-black-50" href="{{path('accueil')}}"> Parcourir les jeux → </a>
+
+    <h3> Rejoingnez la communauté </h3>
+    <p> Partagez un nombre infini de jeux sur notre site web, et échangez avec des gens du monde entier ! </p>
+    <a class ="nav-link text-black-50" href="{{path('security_registration')}}"> S'inscrire sur SteamLike → </a>
+
+{% endblock %}
