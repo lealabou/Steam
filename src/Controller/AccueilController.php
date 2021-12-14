@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Catalogues;
+use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -50,6 +51,14 @@ class AccueilController extends AbstractController
     public function aPropos()
     {
         return $this->render('accueil/apropos.html.twig');
+    }
+
+    /**
+     * @Route("/profile", name= "accueil_profile")
+     */
+    public function profile() 
+    {
+        return $this->render('user/user.html.twig');
     }
 
     /**
