@@ -3,14 +3,6 @@
 {% form_theme formJeu 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-    
-    <h1>        
-        {% if editMode %}
-            Modification du Jeu
-        {% else %}
-            Création d'un jeu
-        {% endif %}
-    </h1>
 
     {{ form_start(formJeu) }}
 
@@ -19,8 +11,6 @@
     {{ form_row(formJeu.Image, {'attr': {'placeholder': "URL de l'image"}}) }}
     {{ form_row(formJeu.Categorie, {'attr': {'placeholder': "Categorie du jeu"}}) }}
     {{ form_row(formJeu.Date, {'attr': {'placeholder': "Date de création"}}) }}
-    {{ form_row(formJeu.Prix, {'attr': {'placeholder': "Prix du jeu"}}) }}
-    {{ form_row(formJeu.Telechargement, {'attr': {'placeholder': "Lien de telechagement"}}) }}
 
     <button type="submit" class="btn btn-success">
         {% if editMode %}

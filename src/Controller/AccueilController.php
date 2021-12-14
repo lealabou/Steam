@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Catalogues;
 use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -41,6 +42,7 @@ class AccueilController extends AbstractController
             'title' => 'Bienvenue sur Steam'
         ]);
     }
+
 
     /**
      * @Route("/apropos", name= "accueil_apropos")
@@ -78,7 +80,8 @@ class AccueilController extends AbstractController
                     ->add('Image')
                     ->add('Categorie')
                     ->add('Date')
-                    
+                    ->add('Prix')
+                    ->add('Telechargement')
                     ->getForm();
         $form->handleRequest($request);
 
