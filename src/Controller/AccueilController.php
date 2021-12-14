@@ -27,6 +27,7 @@ class AccueilController extends AbstractController
 
         $catalogues = $repo->FindAll();
         return $this->render('accueil/index.html.twig', [
+            'title' => 'Bienvenue sur Steam',
             'controller_name' => 'AccueilController',
             'catalogues' => $catalogues
         ]);
