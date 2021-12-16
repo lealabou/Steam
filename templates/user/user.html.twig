@@ -1,10 +1,18 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} Profil {% endblock %}
+
 {% block body %}
-    <h1> Profil </h1>
+    <h1> Profil de {{app.user.username}} </h1>
+
+    {% for message in app.flashes('message') %}
+        <div class = "p-3 my-2 rounded-2 success"> {{message}} </div>
+    {% endfor %}
 
     <p> Username : {{app.user.username}} </p>
     <p> First Name : {{app.user.firstName}} </p>
     <p> Last Name : {{app.user.lastName}} </p>
+
+    <a href="{{ path('user_editProfile')}}" class ="nav-link text-black-50"> Modifier le profil → </a>
 
 {% endblock %}
