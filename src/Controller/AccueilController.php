@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Catalogues;
 use App\Entity\User;
+use App\Form\EditProfileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -27,6 +28,7 @@ class AccueilController extends AbstractController
 
         $catalogues = $repo->FindAll();
         return $this->render('accueil/index.html.twig', [
+            'title' => 'Bienvenue sur Steam',
             'controller_name' => 'AccueilController',
             'catalogues' => $catalogues
         ]);
@@ -111,4 +113,26 @@ class AccueilController extends AbstractController
             'catalogues' => $catalogues
         ]);
     }
+
+/**
+ * @Route("/user", name="user_editProfile")
+ */
+public function editProfile(Request $request) {
+    $user = $this->getUser();
+    $form = $this->createForm(EditProfileType::class, $user);
+
+    $form->handleRequest($request);
+
+    if($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        $this->addFlash('message', 'Profil mis à jour');
+        return $this->redirectToRoute('users');
+    }
+
+    return $this->render('user/editProfile.html.twig');
+}
+
 }
