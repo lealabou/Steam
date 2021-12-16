@@ -31,6 +31,7 @@ class AccueilController extends AbstractController
             'title' => 'Bienvenue sur Steam',
             'controller_name' => 'AccueilController',
             'catalogues' => $catalogues
+
         ]);
     }
 
@@ -92,7 +93,10 @@ class AccueilController extends AbstractController
             $entityManager->persist($catalogues);
             $entityManager->flush();
 
-            return $this->redirectToRoute('accueil_show', ['id' => $catalogues->getId()]);
+            return $this->redirectToRoute('accueil_show', [
+                'id' => $catalogues->getId(),
+                'editMode' => $catalogues->getId() !== null
+            ]);
         }
 
         return $this->render('accueil/createGame.html.twig', [
@@ -110,7 +114,8 @@ class AccueilController extends AbstractController
         $repo = $this->getDoctrine()->GetRepository(Catalogues::class);
         $catalogues = $repo->find($id);
         return $this->render('accueil/show.html.twig',[
-            'catalogues' => $catalogues
+            'catalogues' => $catalogues,
+            'editMode' => $catalogues->getId() !== null
         ]);
     }
 

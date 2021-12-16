@@ -7,5 +7,15 @@
             <img src="{{ catalogues.image }}" alt ="">
              {{ catalogues.Description | raw}}
         </div>
+        <div>
+            <p> {{ catalogues.Categorie }} </p>
+            <p> {{ catalogues.Date }} </p>
+            <p> {{ catalogues.Prix }} </p>
+            <p> {{ catalogues.Telechargement }} </p>
+        </div>
+
+    <button type="submit" class="btn btn-success">
+        <a href="{{ path('accueil_editGame',{'id' : catalogues.id})}}" class ="nav-link text-black-50"> Modifier le jeu </a>
+
     </catalogues>
 {% endblock %}
