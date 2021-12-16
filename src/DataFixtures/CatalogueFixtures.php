@@ -26,12 +26,13 @@ class CatalogueFixtures extends Fixture
                         ->setTelechargement("<p>Lien du jeu n°i</p>");
             $manager->persist($catalogues);
 
+
 #            for($j = 1; $j <= mt_rand(4,10); $j++){
 #                $comment = new \Comment();
 #                
 #                $content = '<p>' . join($faker->paragraphs(2),
 #                '</p><p>') . '</p>';
-
+#
 #                $comment->setAuteur($faker->name)
 #                        ->setContenue($content)
 #                        ->setDate($faker->dateTimeBetween('6 months'))
