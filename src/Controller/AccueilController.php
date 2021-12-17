@@ -105,6 +105,20 @@ class AccueilController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/accueil/{id}/deleteGame", name="accueil_deleteGame")
+     */
+    public function delete(Catalogues $catalogues) {
+        $repo = $this->getDoctrine()->getManager();
+        $repo->remove($catalogues);
+        $repo->flush();
+
+        return $this->redirectToRoute('home');
+    }
+
+
+
     /**
      * @Route("/accueil/{id}", name= "accueil_show")
      */
