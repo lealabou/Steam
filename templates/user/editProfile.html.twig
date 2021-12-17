@@ -8,17 +8,14 @@
         </div class = "col-xs4">
 
             <h1> Modification du profil de {{app.user.username}} </h1>
-            {{ form_start(form) }}
-            {{ form_row(form.firstName, {'label' : 'Changer username', 'attr': {'placeholder': 'username...' }}) }}
-            <button type="submit" class="btn btn-success"> Inscription ! </button>
-            {{ form_end(form) }}
+            {{ form_start(formProfile) }}
+            {{ form_row(formProfile.username, {'label' : 'Changer le nom d\'utilisateur', 'attr': {'placeholder': 'votre nom d\'utilisateur...' }}) }}
+            {{ form_row(formProfile.firstName, {'label' : 'Changer le prénom', 'attr': {'placeholder': 'votre prénom...' }}) }}
+            {{ form_row(formProfile.lastName, {'label' : 'Changer le nom', 'attr': {'placeholder': 'votre nom...' }}) }}            
+            <button type="submit" class="btn btn-success"> Enregistrer les modifications ! </button>
+            {{ form_end(formProfile) }}
 
         </div>
-    </div>
-
-    <div>
-        <button type="submit" class="btn btn-success">
-            <a href="{{ path('user')}}" class="nav-link text-black-50"> Retour </a>
-    </div>    
+    </div> 
 
 {% endblock %}
