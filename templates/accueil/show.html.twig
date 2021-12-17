@@ -17,5 +17,13 @@
     <button type="submit" class="btn btn-success">
         <a href="{{ path('accueil_editGame',{'id' : catalogues.id})}}" class ="nav-link text-black-50"> Modifier le jeu </a>
 
+    <button type="submit" class="btn btn-success">
+        <a href="{{ path('accueil_deleteGame',{'id' : catalogues.id})}}" class ="nav-link text-black-50"> Supprimer le jeu </a>
+
+    <div>
+        <button type="submit" class="btn btn-success">
+            <a href="{{ path('accueil')}}" class="nav-link text-black-50"> Retour </a>
+    </div>
+
     </catalogues>
 {% endblock %}
