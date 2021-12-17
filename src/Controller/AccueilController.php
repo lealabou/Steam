@@ -120,24 +120,28 @@ class AccueilController extends AbstractController
     }
 
 /**
- * @Route("/user", name="user_editProfile")
+ * @Route("/editProfile", name="user_editProfile")
  */
 public function editProfile(Request $request) {
     $user = $this->getUser();
-    $form = $this->createForm(EditProfileType::class, $user);
+    $formProfile = $this->createForm(EditProfileType::class, $user);
 
-    $form->handleRequest($request);
+    $formProfile->handleRequest($request);
 
-    if($form->isSubmitted() && $form->isValid()) {
+    if($formProfile->isSubmitted() && $formProfile->isValid()) {
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
         $em->flush();
 
         $this->addFlash('message', 'Profil mis à jour');
-        return $this->redirectToRoute('users');
+        return $this->render('user/user.html.twig');
     }
 
-    return $this->render('user/editProfile.html.twig');
+    return $this->render('user/editProfile.html.twig', [
+        'formProfile' => $formProfile->createView()
+    ]);
 }
+
+
 
 }
