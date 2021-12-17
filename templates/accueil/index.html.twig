@@ -3,21 +3,58 @@
 {% block title %}Steam{% endblock %}
 
 {% block body %}
+<style>
+.MiseEnPage {
+    display: flex;
+    flex-direction:row;
 
+    margin:auto;
+    margin-left:25vw;
+    justify-content: space-between;
+    width: 14vw;
+}
+    .MiseEnPage .boutton{
+        background-color:#009C96;
+        border-radius: 4px;
+        margin-right:1vw;
+        margin-bottom:1vw;
+        justify-content:left;
+        border:0px solid;
+    }
+    .MiseEnPage .texte{
+        text-decoration:none;
+        color:white;
+        padding:15px;
+    }
+
+
+img {
+    display: flex-end;
+    margin:1vw;
+    width: 500px;
+    height:250px;
+}
+</style>
 <h1> {{title}} </h1>
 
 <section class="catalogues">
 
     {% for catalogues in catalogues %}
-        <catalogues>
-            <h2> {{ catalogues.Titre}}</h2>
-            <div class="content">
-                <img src="{{ catalogues.image }}" alt ="">
-                {{ catalogues.Description | raw}}
-                <a href="{{ path('accueil_show',{'id' : catalogues.id}) }}" class="btn btn-primary">Lire la suite</a>
-            </div>
-        </catalogues>
+        <div class="MiseEnPage">
+            <catalogues>
+                <h2> {{ catalogues.Titre}}</h2>
+                <div class="content">
+                    <div>
+                        <img src="{{ catalogues.image }}" alt ="">
+                    </div>
+                    <p>{{ catalogues.Description | raw}}</p>
+                    <p>{{ catalogues.Prix}} Euro</p>
+                    <button class="boutton">
+                        <a href="{{ path('accueil_show',{'id' : catalogues.id}) }}" class="texte">Plus d'information</a>
+                </div>
+            </catalogues>
+        </div>
     {% endfor %}
-    
+
 </section>
 {% endblock %}

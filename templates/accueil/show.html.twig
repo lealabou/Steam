@@ -1,29 +1,61 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
-    <catalogues>
-        <h2> {{catalogues.Titre}}</h2>
-        <div class="content">
-            <img src="{{ catalogues.image }}" alt ="">
-             {{ catalogues.Description | raw}}
-        </div>
-        <div>
-            <p> {{ catalogues.Categorie }} </p>
-            <p> {{ catalogues.Date }} </p>
-            <p> {{ catalogues.Prix }} </p>
-            <p> {{ catalogues.Telechargement }} </p>
-        </div>
 
-    <button type="submit" class="btn btn-success">
-        <a href="{{ path('accueil_editGame',{'id' : catalogues.id})}}" class ="nav-link text-black-50"> Modifier le jeu </a>
+<style>
+    .MiseEnPage {
+    display: flex;
+    flex-direction:row;
 
-    <button type="submit" class="btn btn-success">
-        <a href="{{ path('accueil_deleteGame',{'id' : catalogues.id})}}" class ="nav-link text-black-50"> Supprimer le jeu </a>
+    margin:auto;
+    margin-left:25vw;
+    justify-content: space-between;
+    width: 14vw;
+}
+    .MiseEnPage .boutton{
+        background-color:#009C96;
+        border-radius: 4px;
+        margin-right:1vw;
+        margin-bottom:1vw;
+        justify-content:left;
+        border:0px solid;
+    }
+    .MiseEnPage .texte{
+        text-decoration:none;
+        color:white;
+        padding:15px;
+    }
 
-    <div>
-        <button type="submit" class="btn btn-success">
-            <a href="{{ path('accueil')}}" class="nav-link text-black-50"> Retour </a>
+img {
+    width: 500px;
+    height:250px;
+}
+
+
+</style>
+    <div class="MiseEnPage">
+        <catalogues>
+            <h2> {{catalogues.Titre}}</h2>
+            <div class="content">
+                <img src="{{ catalogues.image }}" alt ="">
+                {{ catalogues.Description | raw}}
+            </div>
+            <div>
+                <p> {{ catalogues.Categorie }} </p>
+                <p> {{ catalogues.Date }} </p>
+                <p> {{ catalogues.Prix }} euro </p>
+                <a href="{{ catalogues.Telechargement }}" class ="button"> {{ catalogues.Telechargement }} </a>
+ 
+            </div>
+            <button type="submit" class="boutton">
+                <a href="{{ path('accueil_editGame',{'id' : catalogues.id})}}" class ="texte"> Modifier le jeu </a>
+
+            {# <button type="submit" class="btn btn-success">
+                <a href="{{ path('accueil_deleteGame',{'id' : catalogues.id})}}" class ="nav-link text-black-50"> Supprimer le jeu </a>
+            #}
+            <button type="submit" class="boutton">
+                <a href="{{ path('accueil')}}" class="texte"> Retour </a>
+
+
+        </catalogues>
     </div>
-
-    </catalogues>
 {% endblock %}
